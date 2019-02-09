@@ -7,14 +7,10 @@ pub enum Classification {
 }
 
 pub fn classify(num: u64) -> Option<Classification> {
-    let mut vec = vec![];
-    for i in 1u64..=num/2 {
-        if &num % i == 0 && i != num{
-            vec.push(i);
-        }
-    }
 
-    let sum: u64 = vec.iter().sum();
+    let sum: u64 = (1..num/2 + 1) //numbers from 1 to num/2+1
+        .filter(|f| num % f == 0) //filter out nonfactors
+        .sum(); 
 
     match sum.cmp(&num){
         Ordering::Less => Some(Classification::Deficient),
