@@ -8,18 +8,17 @@ pub fn word_count(words: &str) -> HashMap<String, u32> {
     println!("{}", filtered);
 
     filtered.split(|c| c == ' ' || c == '\n' || c == ',')
+            .filter(|word| !word.is_empty())
             .for_each(|word| {
                 let mut word: String = word.to_string();
                 word.retain(|c| c.is_alphanumeric() || c == '\'');
 
 
-                if word != "" {
                     if map.contains_key(&word) {
                         *map.get_mut(&word).unwrap() += 1; //get_mut returns an Option, Option.unwrap() returns the value
                     } else {
                         map.insert(word.to_string(), 1u32);
                     }
-                }
             });
 
     println!("{:?}", map);
