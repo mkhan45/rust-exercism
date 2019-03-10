@@ -15,7 +15,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        println!("Multiplication table: {}", table_neatprint(multip_table(input)));
+        println!("Multiplication table: {}", table_neatprint(multip_table_iter(input)));
         println!("Fib: {}", fib(input));
     }
 
