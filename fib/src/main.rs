@@ -1,13 +1,20 @@
+use std::io;
+use fib::fib;
+
 fn main() {
-    println!("{}", fib(93));
-}
+    loop{
+        println!("Input:");
 
-fn fib(n: usize) -> usize{
-    let mut fib_arr = vec![1, 1];
+        let mut input = String::new();
 
-    for i in fib_arr.len()..n{
-        fib_arr.push(fib_arr[i-1] + fib_arr[i-2]);
+        io::stdin().read_line(&mut input)
+            .expect("Failed to read line");
+
+        let input: usize = match input.trim().parse(){
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
+        println!("Fib: {}", fib(input));
     }
-
-    return fib_arr[n-1];
 }
