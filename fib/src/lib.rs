@@ -24,17 +24,12 @@ pub fn multip_table_iter(n: usize) -> Vec<Vec<usize>> {
     (1..=n)
         .fold(Vec::new(), |mut arr: Vec<Vec<usize>>, y| {
             arr.push((1..=n)
-                     .fold(Vec::new(), |mut row: Vec<usize>, x|{
-                         row.push(x*y);
-                         row
-                     }
-                     )
+                     .map(|x| x * y)
+                     .collect()
                     );
             arr
         }
         )
-
-
 }
 
 pub fn table_neatprint<T: std::string::ToString>(table: Vec<Vec<T>>) -> String{
