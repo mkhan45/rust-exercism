@@ -1,5 +1,5 @@
 use std::io;
-use fib::*;
+use multiplication_table::*;
 
 fn main() {
     loop{
@@ -15,7 +15,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        println!("Fib: {}", fib(input));
+        println!("Multiplication table: {}", table_neatprint(multip_table_iter(input)));
     }
 
 }
