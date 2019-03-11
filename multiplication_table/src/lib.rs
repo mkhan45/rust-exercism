@@ -11,15 +11,10 @@ pub fn multip_table(n: usize) -> Vec<Vec<usize>> {
 }
 
 pub fn multip_table_iter(n: usize) -> Vec<Vec<usize>> {
-    (1..=n)
-        .fold(Vec::new(), |mut arr: Vec<Vec<usize>>, y| {
-            arr.push((1..=n)
-                     .map(|x| x * y)
-                     .collect()
-                    );
-            arr
-        }
-        )
+    (1..=n).map(|y|{
+        (1..=n).map(|x| x * y)
+               .collect()
+    }).collect()
 }
 
 pub fn table_neatprint<T: std::string::ToString>(table: Vec<Vec<T>>) -> String{
